@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
 
       {/* Hero Section */}
-      <header className="relative h-screen flex items-center justify-center overflow-hidden">
+      <header className="relative h-screen flex items-center justify-center overflow-hidden herosection">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 to-pink-900/50 backdrop-blur-sm"></div>
         
         <motion.div 
@@ -85,6 +85,38 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+    {/* Nueva Sección de Videos */}
+    <section className="py-24 px-8 bg-gray-800/50 backdrop-blur-lg">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="max-w-7xl mx-auto space-y-16"
+        >
+          <h2 className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-300">
+            Últimos Lanzamientos
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-pink-500 transition-all duration-300">
+              <iframe
+                src="https://www.youtube.com/embed/9CXKxhqL-To"
+                className="absolute w-full h-full"
+                title="AXERE Vibes - Último Lanzamiento"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-pink-500 transition-all duration-300">
+              <iframe
+                src="https://www.youtube.com/embed/AmmE9kk7Azk"
+                className="absolute w-full h-full"
+                title="AXERE Vibes - Éxito Anterior"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Eventos */}
