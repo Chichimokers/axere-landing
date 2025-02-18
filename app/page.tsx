@@ -1,171 +1,150 @@
 "use client";
 import Head from "next/head";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="bg-gray-900 text-white font-sans" >
+    <div className="bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen font-sans">
       <Head>
-        <title>AXERE Vibes - Música Moderna</title>
-        <meta name="description" content="Sitio oficial de AXERE Vibes, un músico moderno que rompe esquemas." />
+        <title>AXERE Vibes - Innovación Musical</title>
+        <meta name="description" content="AXERE Vibes: Revolucionando la escena musical con sonidos urbanos disruptivos" />
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Fonts */}
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-        {/* Font Awesome */}
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          integrity="sha512-Fo3rlrZj/k7ujTnHq6xY9pC1q5qvS3u2cD7npdph1b4K0a3YgZ9bqSThD7C6+9Cj3K7z6c7E7k3T9v2zK9F8Eg=="
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
       </Head>
 
       {/* Hero Section */}
-      <header className="relative h-screen bg-cover bg-center flex items-center justify-center herosection">
+      <header className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/80 to-pink-900/50 backdrop-blur-sm"></div>
         
-        <div className="absolute inset-0 bg-black opacity-60"></div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-wider animate-fade-in">
-            AXERE Vibes
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 text-center px-4 space-y-8"
+        >
+          <h1 className="text-6xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-300">
+            AXERE
           </h1>
-          <p className="text-xl md:text-2xl mb-8 animate-fade-in">Música Moderna • AXERE Urbano</p>
-          <div className="flex justify-center space-x-6 text-2xl animate-fade-in">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-instagram hover:text-pink-500 transition-colors"></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-twitter hover:text-blue-400 transition-colors"></i>
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <i className="fab fa-youtube hover:text-red-500 transition-colors"></i>
-            </a>
+          <p className="text-2xl md:text-3xl font-light text-gray-200">Reinventando el sonido urbano</p>
+          <div className="flex justify-center gap-8 text-3xl">
+            {[
+              { icon: 'instagram', color: 'hover:text-pink-400', link: 'https://instagram.com' },
+              { icon: 'spotify', color: 'hover:text-green-400', link: 'https://spotify.com' },
+              { icon: 'tiktok', color: 'hover:text-purple-400', link: 'https://tiktok.com' }
+            ].map((social, i) => (
+              <motion.a
+                key={social.icon}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2 }}
+                className={`${social.color} transition-colors duration-300`}
+              >
+                <i className={`fab fa-${social.icon}`} />
+              </motion.a>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </header>
 
       {/* About Section */}
-      <section className="py-16 px-8 md:px-16 bg-gray-800">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h2 className="text-3xl font-bold mb-6">Sobre mí</h2>
-          <p className="text-lg leading-relaxed">
-            AXERE Vibes es un artista que rompe esquemas, fusionando ritmos urbanos con una energía única y provocativa.
-            Su estilo moderno y disruptivo lo ha convertido en una figura relevante dentro de la escena musical actual.
+      <section className="py-24 px-8 bg-gray-800/50 backdrop-blur-lg">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="max-w-5xl mx-auto text-center"
+        >
+          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-300">
+            Sobre el Proyecto
+          </h2>
+          <p className="text-xl leading-relaxed text-gray-300 max-w-3xl mx-auto">
+            Fusionando tecnología y arte sonoro, AXERE Vibes redefine los límites de la música urbana contemporánea. 
+            Cada producción es una experiencia multisensorial que combina ritmos orgánicos con síntesis digital.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Music Section */}
-      <section className="py-16 px-8 md:px-16 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h2 className="text-3xl font-bold mb-6">Música</h2>
-          <div className="flex justify-center">
-            <iframe
-              src="https://open.spotify.com/embed/artist/4MJFBEDWGVl1rL6EnxGNOm"
-              width="300"
-              height="380"
-              frameBorder="0"
-              allow="encrypted-media"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* Videos Section */}
-      <section className="py-16 px-8 md:px-16 bg-gray-800">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h2 className="text-3xl font-bold mb-6">Videos</h2>
-          <div className="flex justify-center">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/AmmE9kk7Azk"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section className="py-16 px-8 md:px-16 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <h2 className="text-3xl font-bold mb-6">Próximos Eventos</h2>
-          <ul className="space-y-4 text-xl">
-            <li>15 de marzo 2025 - New York, NY</li>
-            <li>10 de abril 2025 - Los Angeles, CA</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-16 px-8 md:px-16 bg-gray-800">
-        <div className="max-w-4xl mx-auto animate-fade-in">
-          <h2 className="text-3xl font-bold text-center mb-6">Contacto</h2>
-          <form className="space-y-4">
-            <div className="flex flex-col">
-              <input
-                type="text"
-                placeholder="Tu Nombre"
-                className="p-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-pink-500 transition"
-              />
-            </div>
-            <div className="flex flex-col">
-              <input
-                type="email"
-                placeholder="Tu Email"
-                className="p-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-pink-500 transition"
-              />
-            </div>
-            <div className="flex flex-col">
-              <textarea
-                placeholder="Tu Mensaje"
-                className="p-4 rounded bg-gray-700 border border-gray-600 focus:outline-none focus:border-pink-500 transition"
-                rows={4}
-              ></textarea>
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                className="bg-pink-600 hover:bg-pink-700 text-white py-3 px-8 rounded transition duration-300"
+      {/* Discografía */}
+      <section className="py-24 px-8 bg-gray-900">
+        <div className="max-w-7xl mx-auto text-center space-y-16">
+          <h2 className="text-4xl font-bold text-gray-100">Lanzamientos</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {['CYBERPUNK', 'NEON DREAMS', 'URBAN FUTURE'].map((album, i) => (
+              <motion.div 
+                key={album}
+                whileHover={{ scale: 1.05 }}
+                className="bg-gray-800/50 p-8 rounded-xl backdrop-blur-sm border border-gray-700 space-y-6"
               >
-                Enviar Mensaje
+                <div className="aspect-square bg-gradient-to-br from-pink-500/30 to-purple-500/30 rounded-lg" />
+                <h3 className="text-2xl font-bold text-gray-100">{album}</h3>
+                <button className="bg-pink-600/50 hover:bg-pink-700/50 text-white px-6 py-3 rounded-full transition-all duration-300">
+                  Escuchar ahora
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Eventos */}
+      <section className="py-24 px-8 bg-gray-800/50">
+        <div className="max-w-5xl mx-auto space-y-16">
+          <h2 className="text-4xl font-bold text-center text-gray-100">Próximas Experiencias</h2>
+          <div className="space-y-6">
+            {[
+              { date: '15 MAR 2025', location: 'Brooklyn Mirage, NYC' },
+              { date: '22 ABR 2025', location: 'Downtown LA, California' }
+            ].map((event, i) => (
+              <div key={event.date} className="flex justify-between items-center p-6 bg-gray-900/50 rounded-xl border border-gray-700 hover:border-pink-500 transition-all duration-300">
+                <div className="space-y-1">
+                  <p className="text-pink-400 font-medium">{event.date}</p>
+                  <p className="text-xl text-gray-200">{event.location}</p>
+                </div>
+                <button className="bg-transparent border border-pink-500 text-pink-400 px-8 py-3 rounded-full hover:bg-pink-500/10 transition">
+                  Tickets
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contacto */}
+      <section className="py-24 px-8 bg-gray-900">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="max-w-2xl mx-auto space-y-16"
+        >
+          <h2 className="text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-300">
+            Conexión Digital
+          </h2>
+          <form className="space-y-8">
+            {['Nombre', 'Email', 'Mensaje'].map((field, i) => (
+              <div key={field} className="relative">
+                <input 
+                  type={field === 'Email' ? 'email' : 'text'} 
+                  placeholder=" "
+                  className="w-full p-6 bg-gray-800/50 border border-gray-700 rounded-xl backdrop-blur-sm focus:border-pink-500 focus:ring-2 focus:ring-pink-500/30 transition-all peer"
+                />
+                <label className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 peer-focus:text-pink-400 transition-all pointer-events-none peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-7 peer-focus:scale-90 peer-placeholder-shown:scale-100">
+                  {field}
+                </label>
+              </div>
+            ))}
+            <div className="text-center">
+              <button className="bg-pink-600 hover:bg-pink-700 text-white px-12 py-4 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105">
+                Transmitir Mensaje
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 bg-gray-900 text-center">
-        <p>&copy; 2025 AXERE Vibes. Todos los derechos reservados.</p>
+      <footer className="py-12 text-center border-t border-gray-800">
+        <p className="text-gray-400">&copy; 2025 AXERE Vibes · Innovación Sonora</p>
       </footer>
-
-      {/* Estilos globales */}
-      <style jsx global>{`
-        body {
-          margin: 0;
-          font-family: "Montserrat", sans-serif;
-        }
-        .hero {
-          background-image: url('/path-to-your-image.jpg');
-        }
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-fade-in {
-          animation: fadeIn 1s ease-in-out;
-        }
-      `}</style>
     </div>
   );
 }
